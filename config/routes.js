@@ -46,23 +46,6 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-    // OPS
-    'get /ops/report': {
-        controller: 'ops',
-        action: 'getReport'
-    },
-    'post /ops/report': {
-        controller: 'ops',
-        action: 'saveReport'
-    },
-    'put /ops/report': {
-        controller: 'ops',
-        action: 'updateReport'
-    },
-    'delete /ops/report': {
-        controller: 'ops',
-        action: 'deleteReport'
-    },
 
     // Exposed API
 

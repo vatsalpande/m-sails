@@ -19,7 +19,7 @@ module.exports = function(grunt) {
 
             // API files to watch:
             files: ['api/coffee/**/*.coffee'],
-            tasks: ['coffee:dev']
+            tasks: ['coffee:dev', 'apidoc:service']
         },
         assets: {
 
