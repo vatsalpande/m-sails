@@ -44,3 +44,7 @@ nbproject
 ########################
 config/local.js
 config/doe/*.js
+
+
+### apidoc
+apidoc/
