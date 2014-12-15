@@ -4,5 +4,5 @@ grunt apidoc
   git init
   git add .
   git commit -m "Deployed to Github Pages"
-  git push --force --quiet "git@github.com:martin-liu/m-sails.git" gh-pages
+  git push --force --quiet "git@github.com:martin-liu/m-sails.git" master:gh-pages
 )

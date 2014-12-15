@@ -33,7 +33,7 @@
     "scripts": {
         "start": "node app.js",
         "debug": "node debug app.js",
-        "apidoc": "./apidoc.sh"
+        "apidoc": "bin/apidoc.sh"
     },
     "main": "app.js",
     "devDependencies": {
