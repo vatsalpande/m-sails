@@ -10,7 +10,6 @@ function processRequest(req, res){
     }
 
     bindGlobal(res);
-    process404(req, res);
 }
 
 function getApiVersion(req){
@@ -21,6 +20,7 @@ function getApiVersion(req){
             return parseInt(match[1]);
         }
     }
+    return sails.config.api.defaultVersion;
 }
 
 function bindGlobal(res){
@@ -28,35 +28,10 @@ function bindGlobal(res){
     sails.opsins.currentRes = res;
 }
 
-function process404(req, res){
-    sails.on('router:request:404', function(req, res){
-        if(! /^\/v\d*\//.test(req.path)){
-            var version = getApiVersion(req);
-            if (!version || _.isNaN(version) || version < 1) {
-                version = sails.config.api.defaultVersion;
-            }
-            var prefix = '/v' + version;
-            res.redirect(prefix + req.url);
-        }
-    });
-}
-
 module.exports = function (req, res, next) {
-
-    // Process API version
-    // check path, if have "/v1/" style prefix
-    if (/^\/v\d*\//.test(req.path)){
-        // do nothing
-    } else {
-        var version = getApiVersion(req);
-        if (version > 0){
-            var prefix = '/v' + version;
-            return res.redirect(prefix + req.url);
-        }
-    }
 
     processRequest(req, res);
 
     // default go next
     return next();
-}
+};
