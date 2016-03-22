@@ -6,7 +6,6 @@
 module.exports = function(grunt) {
   grunt.config.set('ts', {
     server_commonJs: {
-      watch: 'api',
       files: [
         {
           src: [
@@ -24,7 +23,7 @@ module.exports = function(grunt) {
         sourceMap: false,// Useless on the server side.
         declaration: true,// Always useful to have declarations available.
         noEmitOnError: false,// Force log errors.
-        failOnTypeErrors: false,// Force log grunt errors pipeline.
+        failOnTypeErrors: true,// Force log grunt errors pipeline.
         verbose: true
       }
     }

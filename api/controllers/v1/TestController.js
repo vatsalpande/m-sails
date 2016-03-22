@@ -3,7 +3,7 @@ var TestController = (function () {
     }
     TestController.test = function (req, res) {
         return res.json({
-            value: 2
+            value: 1
         });
     };
     return TestController;

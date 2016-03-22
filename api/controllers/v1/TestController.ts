@@ -1,7 +1,7 @@
 class TestController {
   public static test(req, res) {
     return res.json({
-      value: 2
+      value: 1
     });
   }
 }

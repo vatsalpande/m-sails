@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 
   grunt.config.set('concurrent', {
     dev: {
-      tasks: ['nodemon', 'watch', 'ts'],
+      tasks: ['nodemon', 'node-inspector', 'watch'],
       options: {
         logConcurrentOutput: true
       }

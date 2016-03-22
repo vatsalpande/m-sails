@@ -17,6 +17,10 @@
 module.exports = function(grunt) {
 
   grunt.config.set('watch', {
+    api: {
+      files: ['api/**/*.ts'],
+      tasks: ['ts', 'apidoc:service']
+    },
     assets: {
 
       // Assets to watch:
