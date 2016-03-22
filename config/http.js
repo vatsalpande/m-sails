@@ -6,7 +6,7 @@
  * Only applies to HTTP requests (not WebSockets)
  *
  * For more information on configuration, check out:
- * http://sailsjs.org/#/documentation/reference/sails.config/sails.config.http.html
+ * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.http.html
  */
 
 module.exports.http = {
@@ -30,23 +30,24 @@ module.exports.http = {
   *                                                                          *
   ***************************************************************************/
 
-    order: [
-      'mMiddleware',
-      'startRequestTimer',
-      'cookieParser',
-      'session',
-      'bodyParser',
-      'handleBodyParserError',
-      'compress',
-      'methodOverride',
-      'poweredBy',
-      '$custom',
-      'router',
-      'www',
-      'favicon',
-      '404',
-      '500'
-    ],
+     order: [
+       'mMiddleware',
+       'startRequestTimer',
+       'cookieParser',
+       'session',
+       'myRequestLogger',
+       'bodyParser',
+       'handleBodyParserError',
+       'compress',
+       'methodOverride',
+       'poweredBy',
+       '$custom',
+       'router',
+       'www',
+       'favicon',
+       '404',
+       '500'
+     ],
 
   /****************************************************************************
   *                                                                           *
@@ -54,8 +55,12 @@ module.exports.http = {
   *                                                                           *
   ****************************************************************************/
 
-    mMiddleware: require('../m/m-middleware.js')
+    // myRequestLogger: function (req, res, next) {
+    //     console.log("Requested :: ", req.method, req.url);
+    //     return next();
+    // }
 
+    mMiddleware: require('../m/m-middleware.js')
 
   /***************************************************************************
   *                                                                          *
@@ -68,7 +73,7 @@ module.exports.http = {
 
     // bodyParser: require('skipper')
 
-  },
+   },
 
   /***************************************************************************
   *                                                                          *

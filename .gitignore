@@ -48,3 +48,7 @@ config/doe/*.js
 
 ### apidoc
 apidoc/
+
+### TS
+.tscache
+*.d.ts

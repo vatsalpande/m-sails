@@ -27,7 +27,7 @@ function bindVersionizeAPI(version){
 }
 
 function bindVersionRouter(){
-    var version = sails.config.api.defaultVersion;
+    var version = sails.config.defaultVersion;
     if (version > 0){
         bindVersionizeAPI("v" + version);
     }

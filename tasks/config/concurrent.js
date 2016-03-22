@@ -6,14 +6,14 @@
  */
 module.exports = function(grunt) {
 
-    grunt.config.set('concurrent', {
-        dev: {
-            tasks: ['nodemon', 'watch'],
-            options: {
-                logConcurrentOutput: true
-            }
-        }
-    });
+  grunt.config.set('concurrent', {
+    dev: {
+      tasks: ['nodemon', 'watch', 'ts'],
+      options: {
+        logConcurrentOutput: true
+      }
+    }
+  });
 
-    grunt.loadNpmTasks('grunt-concurrent');
+  grunt.loadNpmTasks('grunt-concurrent');
 };
