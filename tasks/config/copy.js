@@ -41,9 +41,9 @@ module.exports = function(grunt) {
     init: {
       files: [{
         expand: true,
-        cwd: './config/doe',
+        cwd: './config/m',
         src: ['*.dist'],
-        dest: './config/doe/',
+        dest: './config/m/',
         rename: function(dest, src){
           return dest + src.replace('.dist', '');
         }

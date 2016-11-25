@@ -15,11 +15,14 @@
  *
  */
 module.exports = function(grunt) {
-
+  var tmpOutDir = '.tmp/ts-output/';
   grunt.config.set('watch', {
     api: {
-      files: ['api/**/*.ts'],
-      tasks: ['ts', 'apidoc:service']
+      files: ['api/**/*.ts', '!api/**/.#*.ts'],
+      tasks: ['ts', 'babel'],
+      options: {
+        spawn: false
+      }
     },
     assets: {
 
@@ -31,5 +34,38 @@ module.exports = function(grunt) {
     }
   });
 
+  (function onlyCompileChangedFiles(){
+    var changedTsFiles = {};
+
+    var onChangeTs = grunt.util._.debounce(function () {
+      var tsFiles = Object.keys(changedTsFiles);
+      var jsFiles = tsFiles.map(function(file) {
+        if (file.indexOf('api/') == 0)  {
+          file = file.replace(/^api\/(.+)\.ts$/, '$1.js');
+        }
+        return file;
+      });
+
+      tsFiles = tsFiles.concat(['typings/main.d.ts', 'api/.baseDir.ts']);
+      grunt.config('ts.api.files', [{src: tsFiles, dest: tmpOutDir}]);
+
+      grunt.config('babel.dist.files', [{
+        expand: true,
+        cwd: tmpOutDir,
+        src: jsFiles,
+        ext: '.js',
+        dest: 'api'
+      }]);
+
+      changedTsFiles = Object.create(null);
+    }, 50);
+
+    grunt.event.on('watch', function (action, filepath) {
+      if (filepath.endsWith('.ts')) {
+        changedTsFiles[filepath] = action;
+        onChangeTs();
+      }
+    });
+  })();
   grunt.loadNpmTasks('grunt-contrib-watch');
 };

@@ -1,3 +1,4 @@
+"use strict";
 var TestController = (function () {
     function TestController() {
     }
@@ -7,5 +8,5 @@ var TestController = (function () {
         });
     };
     return TestController;
-})();
+}());
 module.exports = TestController;

@@ -52,3 +52,4 @@ apidoc/
 ### TS
 .tscache
 *.d.ts
+*.js.map
