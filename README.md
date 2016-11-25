@@ -1,5 +1,6 @@
 # M Service
 
+BareBone sails js application with minimal dependencies with typescript
 ## Setup
 
 * Install git, nodejs
