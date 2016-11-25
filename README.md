@@ -1,4 +1,4 @@
-# M Service
+# Sails With Typescript Minimal Setup
 
 BareBone sails js application with minimal dependencies with typescript
 ## Setup
